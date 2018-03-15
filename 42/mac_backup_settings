@@ -1,0 +1,2 @@
+ls com.apple.*.plist | xargs -I % defaults export % ~/backups/preferences/%
+defaults export

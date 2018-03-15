@@ -1,0 +1,5 @@
+# set the precision to the thousandths
+:%s/\d\+\.\d\+/\=printf('%.3f',str2float(submatch(0)))/g
+
+# clear up trailing zeroes
+:%s/0\+$//

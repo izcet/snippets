@@ -1,0 +1,4 @@
+#in vim 
+#  :%s/[^;{}/]$/&;/
+
+#or just sed 's/target/&addon/g' where & is the match completely
