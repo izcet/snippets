@@ -1,0 +1,75 @@
+#!/bin/sh
+
+satan="666"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+while [                                        	1	                                                  ];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               do
+	sleep $satan 
+
+	food=$(((($RANDOM % 31) - 15) * 5))
+	satan=$(($satan + $food)) 
+#YUM YUM SAUCE
+
+
+
+
+
+
+
+
+	v=$(($RANDOM % 9)) 
+	if [ $v = 0 ]; then
+		say -v hysterical "hahahahaha"
+	elif [ $v = 1 ]; then
+		say -v trinoids "you must construct additional pylones"
+	elif [ $v = 2 ]; then
+		say -v pipe "lololol"
+	elif [ $v = 3 ]; then
+		say -v alex "thats not how that works"
+	elif [ $v = 4 ]; then
+		say -v princess "have you tried turning it off and back on again?"
+	elif [ $v = 5 ]; then
+		say -v paulina "Pantalones del fuego"
+	elif [ $v = 6 ]; then
+		nohup say -v cello "we are no strangers to love, you know the rules and so do i. a full commitment is what I am thinking of, you would not get this from any other guy"
+	elif [ $v = 7 ]; then
+		telnet towel.blinkenlights.nl
+	elif [ $v = 8 ]; then
+		YOUID=$(whoami)
+		NAME=$(ldapsearch -QLLL uid=$YOUID | grep givenName | sed s/givenName\:\ //)
+		say "stop that $NAME. It won't work." -v zarvox
+	fi
+done

@@ -1,0 +1,2 @@
+sed -i '' "s/marvin@42.fr>            /irhett@student.42.us.org>/g" *.c *.h
+#sed -i '' "s/####.fr       /####.us.org   /g" *.c *.h
