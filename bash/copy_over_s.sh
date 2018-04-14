@@ -16,7 +16,7 @@ if [ "$#" -ne "1" ] ; then
 fi
 
 # where the magic happens
-scp $FILE -P $PORT $USER@$HOST:$DEST
+scp -P $PORT $FILE $USER@$HOST:$DEST
 
 
 #tar zcf - $FILE | ssh $USER@$HOST -p $PORT "cd $DEST ; tar zxf -"
