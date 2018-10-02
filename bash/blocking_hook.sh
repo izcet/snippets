@@ -1,3 +1,6 @@
+#!/bin/bash
+#Author: Isaac Rhett
+
 FILES_PATTERN=''  # empty string matches all files
 FORBIDDEN='DONOTCOMMIT'  # offending string
 MESSAGE="COMMIT REJECTED:\n\tFound '$FORBIDDEN' references.\n\tPlease remove them before commiting"
