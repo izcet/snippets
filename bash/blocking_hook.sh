@@ -1,5 +1,7 @@
 FILES_PATTERN=''  # empty string matches all files
-FORBIDDEN='DONOTCOMMIT'
+FORBIDDEN='DONOTCOMMIT'  # offending string
+
+# so files can be referenced by absolute path
 GIT_ROOT=""
 while [ -z "${GIT_ROOT}" ] ; do 
   GIT_ROOT="$(git root 2> /dev/null)"
