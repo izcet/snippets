@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Because of the potential vulnerability described below
+# https://www.theverge.com/2019/7/8/20687014/zoom-security-flaw-video-conference-websites-hijack-mac-cameras
+# https://medium.com/@jonathan.leitschuh/zoom-zero-day-4-million-webcams-maybe-an-rce-just-get-them-to-visit-your-website-ac75c83f4ef5
+
+TARGET=ZoomOpener
+T_PATH=~/.zoomus
+
+echo "Running processes:"
+ps -x | grep $TARGET | grep -v grep | grep $TARGET
+# the last command will error if there are no matches found
+
+# if [ error ] 
+if [ "$?" -eq 1 ] ; then
+  echo "No processes found, exiting."
+else
+  killall $TARGET
+  echo "Killed all instances of $TARGET"
+  echo "When you need it, you can relaunch it from $T_PATH"
+  open "$T_PATH" # opens finder, displaying the app
+fi
+
