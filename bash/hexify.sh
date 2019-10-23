@@ -3,6 +3,11 @@
 IFILE="$1"
 
 if [ "$#" -ne 1 ] ; then
+  # cat -e file
+  # ^ 131 143 156 $
+  # ./hexify.sh file
+  # cat -e file
+  # ^ 83 8F 9C $
   echo "usage: $0 <file to hexify>"
   exit 1
 fi
@@ -19,9 +24,10 @@ NUMS="$(cat "$IFILE" | sed 's/ /\
 
 # this won't protect against numbers whose b16 equivalent is a valid b10 that is also being converted
 while read -r NUM ; do
+  echo "NUM=$NUM"
   HEX="$(hex_num "$NUM")"
+  echo "HEX=$HEX"
 
-  sed -i ".BAK$NUM" "s/ $NUM / $HEX /g" $IFILE
-  sed -i ".BAK$NUM" "s/ $NUM / $HEX /g" $IFILE
+  sed -i ".BAK$NUM" -E "s/ $NUM / $HEX /g" $IFILE
 done < <(echo "$NUMS")
 
