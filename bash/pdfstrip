@@ -1,0 +1,40 @@
+#!/bin/bash
+
+OUTDIR=scripted
+
+# q -- quiet mode, suppress ghostscript output
+# NOPAUSE -- non-interactive mode
+# SAFER -- should be the default, prevents external changes and script execution
+# DEVICE -- output to pdf
+COMMONFLAGS="-q -dNOPAUSE -dSAFER -sDEVICE=pdfwrite"
+
+function convert_single () {
+  local FNAME="$1"
+
+  # save a touched copy
+  gs -q -dNOPAUSE -dSAFER -sDEVICE=pdfwrite -sOutputFile="$OUTDIR/$FNAME.pdf" "$FNAME.pdf" <(echo quit)
+
+  # save a web-optimized version
+  gs -q -dNOPAUSE -dSAFER -sDEVICE=pdfwrite -dFastWebView -sOutputFile="$OUTDIR/$FNAME-optimized.pdf" "$FNAME.pdf" <(echo quit)
+}
+
+function strip_pages () {
+  local FNAME="$1"
+  local PAGED="$OUTDIR/${FNAME}_pages"
+
+  mkdir -p "$PAGED"
+  gs -q -dNOPAUSE -dSAFER -sDEVICE=pdfwrite -sOutputFile="$PAGED/${FNAME}-page%d.pdf" "$FNAME.pdf" <(echo quit)
+  gs -q -dNOPAUSE -dSAFER -sDEVICE=pdfwrite -dFastWebView -sOutputFile="$PAGED/${FNAME}-page-%d-optimized.pdf" "$FNAME.pdf" <(echo quit)
+
+}
+
+mkdir -p "$OUTDIR"
+
+for INPUT in *.pdf ; do
+  echo "Operating on $INPUT"
+  
+  INPUT=`echo $INPUT | sed 's/\.pdf$//'`
+  
+  convert_single "$INPUT"
+  strip_pages "$INPUT"
+done
